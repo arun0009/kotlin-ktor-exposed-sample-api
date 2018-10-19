@@ -1,0 +1,10 @@
+*.iml
+.gradle
+/local.properties
+.idea/
+.DS_Store
+/bin
+/build
+/capture
+/out
+/tomcat.8080

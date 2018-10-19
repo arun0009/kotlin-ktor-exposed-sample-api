@@ -1,0 +1,163 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Employee Api
+  license:
+    name: Apache License
+  contact:
+    name: Arun Gopalpuri
+    email: arun@gopalpuri.com
+servers:
+- url: http://localhost:8080/employee-api
+paths:
+  /:
+    post:
+      summary: Create Employee
+      operationId: createEmployee
+      tags:
+      - employee
+      requestBody:
+        description: Employee
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '201':
+          description: created employee successfully
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeApiError'
+  /{employeeId}:
+    get:
+      description: Get Employee Details
+      operationId: getEmployee
+      tags:
+      - "employee"
+      parameters:
+      - name: employeeId
+        in: path
+        description: employee id to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Employee Details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '404':
+          description: Employee not found
+    put:
+      summary: Update Employee Details
+      operationId: updateEmployee
+      tags:
+      - employee
+      parameters:
+      - name: employeeId
+        in: path
+        description: employee id to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Employee Details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateEmployee'
+      responses:
+        '200':
+          description: updated employee details successfully
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeApiError'
+    delete:
+      summary: Delete an Employee
+      operationId: deleteEmployee
+      tags:
+      - employee
+      parameters:
+      - name: employeeId
+        in: path
+        description: employee id to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '410':
+          description: deleted employee successfully
+
+components:
+  schemas:
+    Address:
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipCode:
+          type: string
+    Employee:
+      properties:
+        employeeId:
+          type: string
+        type:
+          type: string
+          enum: [Manager, Associate]
+        firstName:
+          type: string
+        middleName:
+          type: string
+        lastName:
+          type: string
+        passportNumber:
+          type: string
+        position:
+          type: string
+        addresses:
+          type: array
+          items:
+            $ref: "#/components/schemas/Address"
+    UpdateEmployee:
+      properties:
+        type:
+          type: string
+          enum: [Manager, Associate]
+        firstName:
+          type: string
+        middleName:
+          type: string
+        lastName:
+          type: string
+        passportNumber:
+          type: string
+        position:
+          type: string
+        addresses:
+          type: array
+          items:
+            $ref: "#/components/schemas/Address"
+    EmployeeApiError:
+      properties:
+        executionId:
+          type: string
+        errorMessage:
+          type: string

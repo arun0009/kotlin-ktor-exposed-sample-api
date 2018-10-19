@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    ports:
+    - "8080:8080"
+    environment:
+    - DB_TYPE=postgres
+    depends_on:
+      - postgres
+  postgres:
+    restart: always
+    image: postgres:10
+    ports:
+    - "5432:5432"
+    environment:
+    - DEBUG=false
+    - POSTGRES_USER=sample
+    - POSTGRES_PASSWORD=sample
+    - POSTGRES_DB=employees
+    volumes:
+    - /tmp/postgresql:/var/lib/postgresql
