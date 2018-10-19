@@ -10,7 +10,8 @@ Database tables are migrated at deployment via [Flyway](https://flywaydb.org/get
   
 `EmployeeApiTest` runs end to end test to make sure all api endpoints perform as expected.  
   
-Logs are written to console and can be redirected using `tee` process.  
+Logs are written to console and can be redirected using `tee` process. Logging with MDC (UUID) for tracing purpose and 
+returning MDC UUID in case of error in API response. 
   
 #### Running the application via docker  
 `docker-compose up`
