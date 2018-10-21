@@ -1,6 +1,6 @@
 ## Kotlin Ktor Exposed Sample API  
   
- Sample Employee API is written in [Kotlin](https://kotlinlang.org/) and uses [Ktor async framework](https://ktor.io/) and uses [Exposed Kotlin SQL Framework](https://github.com/JetBrains/Exposed)  
+Sample Employee API is written in [Kotlin](https://kotlinlang.org/) and uses [Ktor async framework](https://ktor.io/) and uses [Exposed Kotlin SQL Framework](https://github.com/JetBrains/Exposed)  
 
 Sample Employee API allows basic CRUD operations (**immutable database**) via REST API and JSON as data exchange format.  
  
