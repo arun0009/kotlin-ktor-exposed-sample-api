@@ -20,8 +20,10 @@ returning MDC UUID in case of error in API response.
 
 The Metrics feature allows you to configure the Metrics to get useful information about the server and the requests.
 
-Run `jconsole` on command line and choose EmployeeApiServerKt and click on `metrics` folder to get server performance.
+Run `jconsole` on command line and choose EmployeeApiServerKt.
 
-![](https://raw.githubusercontent.com/arun0009/kotlin-ktor-exposed-sample-api/master/jconsole.png) 
+![](https://raw.githubusercontent.com/arun0009/kotlin-ktor-exposed-sample-api/master/jconsole.png)
+
+Click on `metrics` folder to get server performance 
 
 ![](https://raw.githubusercontent.com/arun0009/kotlin-ktor-exposed-sample-api/master/metrics.png) 
