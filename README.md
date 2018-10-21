@@ -24,6 +24,6 @@ Run `jconsole` on command line and choose EmployeeApiServerKt.
 
 ![](https://raw.githubusercontent.com/arun0009/kotlin-ktor-exposed-sample-api/master/jconsole.png)
 
-Click on `metrics` folder to get server performance 
+Click on `metrics` folder to get server performance. 
 
 ![](https://raw.githubusercontent.com/arun0009/kotlin-ktor-exposed-sample-api/master/metrics.png) 
