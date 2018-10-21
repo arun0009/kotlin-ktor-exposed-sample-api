@@ -22,6 +22,6 @@ The Metrics feature allows you to configure the Metrics to get useful informatio
 
 Run `jconsole` on command line and choose EmployeeApiServerKt and click on `metrics` folder to get server performance.
 
-[](https://raw.githubusercontent.com/arun0009/kotlin-ktor-exposed-sample-api/master/jconsole.png) 
+![](https://raw.githubusercontent.com/arun0009/kotlin-ktor-exposed-sample-api/master/jconsole.png) 
 
-[](https://raw.githubusercontent.com/arun0009/kotlin-ktor-exposed-sample-api/master/metrics.png) 
+![](https://raw.githubusercontent.com/arun0009/kotlin-ktor-exposed-sample-api/master/metrics.png) 
