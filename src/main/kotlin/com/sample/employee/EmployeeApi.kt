@@ -39,11 +39,10 @@ fun Route.employee(employeeRepository: EmployeeRepository) {
         get("/{employeeId}") {
             val id = call.parameters["employeeId"] ?: throw IllegalArgumentException("Parameter employeeId not found")
             logger.debug("Get employee : $id")
-            val employee = employeeRepository.read(id)
-            if (employee == null){
-                call.respond(HttpStatusCode.NotFound)
-            } else {
-                call.respond(HttpStatusCode.OK, employee)
+            //using Kotlin 1.3 feature when instead of if/else
+            when(val employee = employeeRepository.read(id)){
+                null -> call.respond(HttpStatusCode.NotFound)
+                else -> call.respond(HttpStatusCode.OK, employee)
             }
         }
 
