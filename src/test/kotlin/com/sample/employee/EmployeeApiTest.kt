@@ -19,6 +19,7 @@ class EmployeeApiTest {
         val employeeId = UUID.randomUUID()
         klogger.debug { "Running EmployeeApiTest for id: $employeeId" }
         handleRequest(HttpMethod.Post, "/employee-api") {
+            addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
             setBody("""{"employeeId": $employeeId, "type":Associate,"firstName":"Arun",
                 "middleName":"P", "lastName":"Gopalpuri", "passportNumber":"M0001111", "position": "Analyst",
                 "addresses": [
@@ -26,11 +27,14 @@ class EmployeeApiTest {
                 ]}""".trimMargin())
         }.apply {
             assertEquals(HttpStatusCode.Created, response.status())
-            handleRequest(HttpMethod.Get, "/employee-api/$employeeId").apply {
+            handleRequest(HttpMethod.Get, "/employee-api/$employeeId"){
+                addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
+            }.apply {
                 assertEquals(HttpStatusCode.OK, response.status())
                 assertNotNull(response.content)
             }
             handleRequest(HttpMethod.Put, "/employee-api/$employeeId") {
+                addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
                 setBody("""{"employeeId": $employeeId, "type":Associate,"firstName":"Arun",
                     "middleName":"P", "lastName":"Gopalpuri", "passportNumber":"M0001111", "position": "Senior Analyst",
                     "addresses": [

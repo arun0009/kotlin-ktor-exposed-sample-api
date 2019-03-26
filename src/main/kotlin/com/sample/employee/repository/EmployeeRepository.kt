@@ -82,7 +82,7 @@ class EmployeeRepository {
     fun read(employeeId: String): Employee? {
         return transaction {
             val employee = Employees.select { Employees.employeeId eq employeeId }
-                    .orderBy(Employees.timestamp, isAsc = false).limit(1).andWhere { Employees.active eq true }
+                    .orderBy(Employees.timestamp to SortOrder.DESC).limit(1).andWhere { Employees.active eq true }
                     .map {
                         Employee(
                                 employeeId = it[Employees.employeeId],
@@ -156,7 +156,7 @@ class EmployeeRepository {
         return transaction {
             val dateTime = DateTime(DateTimeZone.UTC)
             val employee = Employees.select { Employees.employeeId eq deleteEmployeeId }
-                    .orderBy(Employees.version, isAsc = false).orderBy(Employees.timestamp, isAsc = false)
+                    .orderBy(Employees.version to SortOrder.DESC).orderBy(Employees.timestamp to SortOrder.DESC)
                     .limit(1).andWhere { Employees.active eq true }
                     .mapNotNull {
                         Employee(
@@ -204,7 +204,7 @@ class EmployeeRepository {
                     it[timestamp] = dateTime
                     it[active] = false
                     it[version] = employee.version + 1
-                }.generatedKey
+                }
 
                 EmployeeAddresses.batchInsert(employeeWithAddresses.addresses) { address ->
                     this[EmployeeAddresses.employeeId] = deleteEmployeeId
