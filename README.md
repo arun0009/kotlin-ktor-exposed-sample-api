@@ -1,6 +1,6 @@
 ## Kotlin Ktor Exposed Sample API  
 
-[![Build Status](https://api.travis-ci.com/arun0009/kotlin-ktor-exposed-sample-api?branch=master)](https://api.travis-ci.com/arun0009/kotlin-ktor-exposed-sample-api)
+[![Build Status](https://api.travis-ci.com/arun0009/kotlin-ktor-exposed-sample-api.svg?branch=master)](https://api.travis-ci.com/arun0009/kotlin-ktor-exposed-sample-api)
 
 Sample Employee API is written in [Kotlin](https://kotlinlang.org/) and uses [Ktor async framework](https://ktor.io/) and uses [Exposed Kotlin SQL Framework](https://github.com/JetBrains/Exposed)  
 
